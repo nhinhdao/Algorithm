@@ -7,8 +7,8 @@ const isPalindrome = function(givenStr) {
             return false;
         }
         e--;
-        continue;
     }
 
     return true;
 };
+
