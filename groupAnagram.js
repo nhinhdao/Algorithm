@@ -1,9 +1,6 @@
 
-
-// ["eat","tea","tan","ate","nat","bat"]
 const groupAnagram = (strArray) => {
     const sortedArray = strArray.map(i => i.split("").sort().join(""));
-    const sortedArrayDictionary = [];
 
     const groupAnagrams = {};
     for (let x = 0; x < sortedArray.length; x++){
@@ -17,6 +14,3 @@ const groupAnagram = (strArray) => {
     
     return Object.values(groupAnagrams);
 }
-
-
-console.log(groupAnagram(["eat","tea","tan","ate","nat","bat"]).toString());
