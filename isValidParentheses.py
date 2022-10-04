@@ -1,54 +1,26 @@
-
-""" 
-Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-
-An input string is valid if:
-
-Open brackets must be closed by the same type of brackets.
-Open brackets must be closed in the correct order.
-Every close bracket has a corresponding open bracket of the same type.
-
-Example 1:
-
-Input: s = "()"
-Output: true
-Example 2:
-
-Input: s = "()[]{}"
-Output: true
-Example 3:
-
-Input: s = "(]"
-Output: false
-"""
-
 def isValidParentheses(str):
     # map the close parenthese with the corresponding opening one
     closeToOpen = {
         "}": "{",
         "]": "[",
-        ")": "("
+        ")": "(",
+        ">": "<"
     }
-
-    # declare an empty stack
     stack = []
+    openParenthese = 0
+    closeParenthese = 0
 
-    # {}()[]
-    for s in str:
-        # if it is a close pr
-        if s in closeToOpen:
-            # if there is a matching open pr in the stack, remove the open pr from stack
-            if stack and (stack[-1] == closeToOpen[s]):
-                stack.pop()
-                # else return false because the close pr doesn't have a matching open one
+    for i in str:
+        if i in closeToOpen:
+            if stack and stack[-1] == closeToOpen[i]:
+                openParenthese -= 1
             else:
-                return False
-            # if it is an open pr, add it to the stack
+                closeParenthese += 1
         else:
-            stack.append(s) 
-
-    # return true if the stack is empty
+            if i in closeToOpen.values():
+                stack.append(i)
+    
     return len(stack) == 0
 
 
-print(isValidParentheses("{}(])[]"));
+print(isValidParentheses("}])>"));
