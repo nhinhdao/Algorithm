@@ -1,5 +1,5 @@
 # Definition for singly-linked list.
-from pickle import NONE
+from multiprocessing import Array
 
 
 class ListNode(object):
@@ -36,6 +36,14 @@ class Solution(object):
 
         return head
 
+def printLinkListValues(list):
+    arr = []
+    while list:
+        arr.append(list.val)
+        list = list.next
+    
+    print(arr)
+
 
 node3 = ListNode(3, None)
 node2 = ListNode(2, node3)
@@ -46,5 +54,5 @@ node3b = ListNode(3, node5)
 node1b = ListNode(1, node3b)
 
 sol = Solution()
-
-print(sol.mergeTwoLists(node1, node1b))
+newList = sol.mergeTwoLists(node1, node1b)
+printLinkListValues(newList)
