@@ -11,21 +11,6 @@ class Solution(object):
         return self.fib(n-1) + self.fib(n-2)
 
     def fibNoRecursive(self, n):
-        """
-        0 1 1 2 3 5 8 13
-        start with 0 and 1;
-        pre = 0
-        next = 1
-        index = 2
-        sum = 0
-        while index <= n:
-            sum = pre + next
-            pre = next
-            next = sum
-            index += 1 
-        
-        return sum
-        """
         pre = 0
         next = 1
         if n == 0:
