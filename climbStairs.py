@@ -47,6 +47,25 @@ class Solution(object):
         if n == 2: return 2
 
         return self.climbStairs(n-1) + self.climbStairs(n-2)
+    
+    def climbStairsNorecursive(self, n):
+        pre = 1
+        next = 2
+        if n == 1:
+            return pre
+        if n == 2:
+            return next
+
+        index = 3
+        sum = 0
+        while index <= n:
+            sum = pre + next
+            pre = next
+            next = sum
+            index += 1 
+        
+        return sum
 
 test = Solution()
 print(test.climbStairs(38))
+print(test.climbStairsNorecursive(38))
