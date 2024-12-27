@@ -11,28 +11,23 @@ class ListNode(object):
 
 class Solution(object):
     def mergeTwoLists(self, list1, list2):
-        # 1   .2   3
-        # 1   3   5   6   7
-        dummy = ListNode()
-        tail = dummy
-        while list1 and list2:
-            if list1.val < list2.val:
-                tail.next = list1
-                list1 = list1.next
-            else:
-                tail.next = list2
-                list2 = list2.next
-            tail = tail.next
+        if list1 is None:
+            return list2
+        if list2 is None:
+            return list1
+        head = list1 if list1 and list2 and list1.val <= list2.val else list1
 
-        if list1:
-            tail.next = list1
-            tail = tail.next
-        
-        else:
-            tail.next = list2
-        
-        head = dummy.next
-        dummy.next = None
+
+        while list1 and list2:
+            next1 = list1.next
+            next2 = list2.next
+
+            if list1.val <= list2.val:
+                list1.next = list2
+                list1 = next1
+            else:
+                list2.next = list1
+                list2 = next2
 
         return head
 
