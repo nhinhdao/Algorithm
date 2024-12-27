@@ -5,21 +5,16 @@ class ListNode:
 
 class LinkedList:
     def reverseList(self, head):
-        # first node point to second node => second point to first
-        # second points to third => third points to second
-        # variable for: first node, second node and the third node
-        # currentNode = head
-        # leftNode = null (head dont have left node)
-        # rightNode = head.next
+        start = None
+        curr = head
 
-        prevNode = None
-        currentNode = head
-
-        while currentNode:
-            nextNode = currentNode.next
-            currentNode.next = prevNode
-            prevNode = currentNode
-            currentNode = nextNode
+        while curr:
+            next = curr.next
+            curr.next = start
+            start = curr
+            curr = next
+        
+        return start
 
     def reverseListUsingRecursion(self, head):        
         """
@@ -63,4 +58,5 @@ node3 = ListNode(3, node4)
 node2 = ListNode(2, node3)
 node1 = ListNode(1, node2)
 test = LinkedList()
+test.reverseList(node1)
 print(test.reverseListUsingRecursion(node1).val)
