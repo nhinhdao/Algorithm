@@ -68,9 +68,41 @@ class Solution(object):
         return count
 
 
+def countStudentsUsingList(students, sandwiches):
+    """
+    [1,1,1,0,0,1] 6
+    [1,0,0,0,1,1]
+
+    count 6
+    6 [1,1,0,0,1] [0,0,0,1,1]
+    5 [1,0,0,1,1] [0,0,0,1,1]
+    4 [0,0,1,1,1] [0,0,0,1,1]
+    3 [0,1,1,1] [0,0,1,1]
+    2 [1,1,1] [0,1,1]
+    1
+    """
+    # [1,1,1] [0,1,1] [1,1] [1,1]
+    
+
+    while students:
+        student = students.pop(0)
+        
+        if student == sandwiches[0]:
+            sandwiches.pop(0)
+        else:
+            students.append(student)
+        
+        if len(set(students)) == 1 and students[0] != sandwiches[0]:
+            break
+    
+    return len(students)
+        
 
 
-student = [0,0,0,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0,0,1,1,1,0,1,0,1,1,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,1,1]
-sandwich = [1,0,0,0,0,0,0,1,1,0,1,1,0,1,1,1,0,0,0,1,1,0,1,1,1,1,1,1,1,0,0,1,0,0,1,0,1,0,1,0,1,1,1,0,1,0]
-test = Solution()
-print(test.countStudentsUsingLinkedList(student, sandwich))
+students = [0,0,0,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,0,0,1,1,1,0,1,0,1,1,0,0,0,0,0,1,1,1,1,0,0,0,0,0,1,1,1]
+sandwiches = [1,0,0,0,0,0,0,1,1,0,1,1,0,1,1,1,0,0,0,1,1,0,1,1,1,1,1,1,1,0,0,1,0,0,1,0,1,0,1,0,1,1,1,0,1,0]
+# test = Solution()
+# print(test.countStudentsUsingLinkedList(students, sandwiches))
+
+print(countStudentsUsingList([1,1,1,0,0,1], [1,0,0,0,1,1]))
+# print(len(set([1,1,1])))
