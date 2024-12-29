@@ -16,32 +16,29 @@ class LinkedList:
         
         return start
 
-    def reverseListUsingRecursion(self, head):        
-        """
-        1. Simple inputs
-        1 -> None :
-        r: 1 -> None
+    def reverseListUsingRecursion(self, head):
 
-        1 -> 2 -> None
-        2 -> 1 -> None = 2 -> reverse(1)
+        def reverseWithRecursion(node1, node2):
+            # basecase
+            # when the nextNode is None, we hit the end of the linked list
+            # turn the node before the nextNode
+            if node2 is None:
+                return node1
 
-        1 -> 2 -> 3 -> None
-        3 -> 2 -> 1 -> None =  3 -> reverse(2)
+            # keep track of next node after node2
+            nextNode = node2.next
 
-        2. Pattern
-        get the next node from the argument node
-        set the next of the current node to prev node
-        now reverse current node and the next node until it is None
-        """
-        def reverse(prev, curr):
-            if curr is None:
-                return prev
-            next = curr.next
-            curr.next = prev
+            # point node2 back to node1
+            node2.next = node1
 
-            return reverse(curr, next)
+            # continue reverse node2 and nextNode
+            return reverseWithRecursion(node2, nextNode)
+
         
-        return reverse(None, head)
+
+        return reverseWithRecursion(None, head)
+
+
 
     def factorial(self, num): #1
         if num == 1:
