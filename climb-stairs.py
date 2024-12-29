@@ -43,28 +43,23 @@ Follow fibonaci numbers
 
 class Solution(object):
     def climbStairs(self, n):
-        if n == 1: return 1
-        if n == 2: return 2
+        if n <= 3: return n
 
         return self.climbStairs(n-1) + self.climbStairs(n-2)
     
     def climbStairsNorecursive(self, n):
-        pre = 1
-        next = 2
-        if n == 1:
-            return pre
-        if n == 2:
-            return next
+        if (n <= 1): return n
 
-        index = 3
-        sum = 0
-        while index <= n:
-            sum = pre + next
-            pre = next
-            next = sum
-            index += 1 
+        result = 0
+        prev2 = 1
+        prev1 = 1
+
+        for i in range(2,n + 1):
+            result = prev1 + prev2
+            prev2 = prev1
+            prev1 = result
         
-        return sum
+        return result
 
 test = Solution()
 print(test.climbStairs(38))
