@@ -10,15 +10,17 @@ class Node:
 class Solution(object):
     def countStudents(self, students, sandwiches):
         count = 0
+        top = 0
+
         while len(students) > count:
-            if students[0] == sandwiches[0]:
+            student = students.pop(0)
+            
+            if student == sandwiches[top]:
+                top += 1
                 count = 0
-                students = students[1:len(students)]
-                sandwiches = sandwiches[1:len(sandwiches)]
             else:
+                students.append(student)
                 count += 1
-                students.append(students[0])
-                students = students[1:len(students)]
         
         return count
 
