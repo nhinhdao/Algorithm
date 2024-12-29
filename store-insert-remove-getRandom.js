@@ -21,7 +21,8 @@ class Storage {
         const index = this.list[val];
         temp = this.values[index];
         this.values[index] = this.values[this.length -1];
-        this.values[this.length -1] = temp
+        this.values[this.length -1] = temp;
+        this.values.pop();
         this.length--;
     }
 
