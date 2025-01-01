@@ -9,15 +9,9 @@ class Solution(object):
         """
         if n == 0: return nums1
 
-        # [ 4,5, >6,4,5,6], m = 3
-        # [1,2, 3], n = 3
-
-        # [1,2,2,2,3,5] 3
-        # [1,3,5], 3
-
-        end = len(nums1) - 1 # 5
-        left = m - 1         # 2
-        right = n - 1        # 2
+        end = (m+n) - 1 
+        left = m - 1         
+        right = n - 1        
 
         while left >= 0 and right >= 0:
             if nums1[left] > nums2[right]:
@@ -29,9 +23,6 @@ class Solution(object):
             
             end -= 1
 
-        # left = 3, right = 0
-
-        # i = 0
         while right >= 0:
             nums1[end] = nums2[right]
             right -= 1
