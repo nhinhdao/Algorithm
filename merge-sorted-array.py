@@ -1,11 +1,12 @@
 class Solution(object):
     def merge(self, nums1, m, nums2, n):
         """
-        - use two pointer 1 -> m and 1-> n
+        - since the two arrays are sorted, we look at last number of each array
+        - use two pointers m - 1 and n - 1 to loop thru 2 arrays, start at the last indexes
+        - use a pointer = last index of (m + n) - 1 to 
         - compare nums1[m] vs nums2[n]
-        - swap small number to big number in nums1
-        - increase the pointer that has smaller number
-        - continue comparing
+        - set the bigger number index[end] of nums1, decrease end each time
+        - append any left over number from nums2 to nums1
         """
         if n == 0: return nums1
 
