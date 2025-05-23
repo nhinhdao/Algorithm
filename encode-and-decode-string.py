@@ -35,12 +35,12 @@ def decodeSt(str):
         while str[j] != '#':
             j += 1
 
-        length = int(str[i:j])
+        lengthOfWord = int(str[i:j])
         j += 1
 
         while i < j:
-            arr.append(str[j : j + length])
-            i = j + length
+            arr.append(str[j : j + lengthOfWord])
+            i = j + lengthOfWord
         j = i + 1
 
     return arr

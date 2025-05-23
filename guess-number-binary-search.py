@@ -1,9 +1,9 @@
-class Solution(object):
+class Solution():
     def __init__(self, target):
         self.target = target
 
     def guess(self, num):
-        return -1 if num > self.target else 1 if num < self.target else 0
+        return 1 if num > self.target else -1 if num < self.target else 0
     
     def guessNumber(self, n):
         left = 1
@@ -14,9 +14,9 @@ class Solution(object):
             num = (left + right) // 2
 
             if self.guess(num) == -1:
-                right =  num - 1
+                left =  num + 1
             elif self.guess(num) == 1:
-                left = num + 1
+                right = num - 1
             else: 
                 return num
         
