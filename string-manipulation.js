@@ -61,5 +61,26 @@ function get_pal_list(collection) {
     return Object.values(obj);
 }
 
+const str = "string manip interview question";
+
+function reverse_str(str) {
+    const arr = str.split(" ");
+    const words = arr.reduceRight((acc, value) => {
+        return `${acc} ${value}`;
+    }, "");
+
+    return words.trim();
+}
+
+function reverse_str2(str) {
+    const arr = str.split(" ");
+    const words = arr.reduceRight((acc, value) => {
+        acc.push(value);
+        return acc
+    }, []);
+
+    return words.join(" ");
+}
+
 // Log to console
 console.log(group_anagram(words));
